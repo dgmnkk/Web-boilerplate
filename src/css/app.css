@@ -370,6 +370,8 @@ tr:nth-child(even) {
         display: none;
     }
 }
+
+/*Add teacher pop-up*/
 .modal {
     display: none; 
     position: fixed;
@@ -417,7 +419,7 @@ tr:nth-child(even) {
     cursor: pointer;
 }
 
-/* Однакова ширина для всіх полів */
+
 .teacher-form input,
 .teacher-form select,
 .teacher-form textarea {
@@ -425,39 +427,39 @@ tr:nth-child(even) {
     margin-bottom: 15px;
     border: 1px solid #ccc;
     border-radius: 4px;
-    width: 100%; /* Встановлюємо однакову ширину для всіх елементів */
-    box-sizing: border-box; /* Щоб padding не впливав на ширину */
+    width: 100%; 
+    box-sizing: border-box; 
 }
 
-/* Вирівнювання full-page-option елементів */
+
 .full-page-option input,
 .full-page-option select,
 .full-page-option textarea {
     margin-top: 5px;
-    width: 100%; /* 100% ширини контейнера */
+    width: 100%;
 }
 .full-page-option{
     margin-top: 5px;
 }
-/* Стилізація грід-сітки для part-page-option */
+
 .part-page-option {
     margin-top: 5px;
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr)); /* Рівномірні колонки */
+    grid-template-columns: repeat(2, minmax(0, 1fr)); 
     grid-gap: 10px;
 }
 
 .part-page-option div {
-    width: 100%; /* Ширина для кожного контейнера в гріді */
+    width: 100%;
 }
 
 .part-page-option input,
 .part-page-option select {
     margin-top: 5px;
-    width: 100%; /* Встановлюємо однакову ширину для полів у гріді */
+    width: 100%; 
 }
 
-/* Стилізація для групи radio buttons */
+
 .radio-group {
     display: flex;
     align-items: center;
@@ -471,7 +473,7 @@ tr:nth-child(even) {
     margin-left: 15px;
 }
 
-/* Кнопка подачі форми */
+
 .submit-btn {
     display: block;
     width: 100%;
@@ -489,7 +491,7 @@ tr:nth-child(even) {
     color: white;
 }
 
-/* Вирівнювання для колірного поля */
+
 .color-picker {
     margin-top: 15px;
     margin-bottom: 15px;
@@ -503,7 +505,7 @@ tr:nth-child(even) {
     width: 50px;
 }
 
-/* Вирівнювання для секції вибору статі */
+
 .sex-options {
     margin-top: 10px;
     display: flex;
@@ -518,6 +520,8 @@ tr:nth-child(even) {
     margin: 0px;
     margin-left: 10px;
 }
+
+/*Teacher info pop-up*/
 
 .teacherModal {
     display: none;
