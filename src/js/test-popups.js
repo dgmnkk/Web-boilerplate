@@ -121,15 +121,18 @@ console.log(filteredResults);
 /**TASK 4 */
 
 function sortUsers(users, sortBy, order = 'asc') {
-    return users.sort((a, b) => {
+    const usersCopy = users.slice();
+    return usersCopy.sort((a, b) => {
         let valueA = a[sortBy];
         let valueB = b[sortBy];
 
-        if (typeof valueA === 'number' || valueA instanceof Date) {
+        if ((typeof valueA === 'number' || valueA instanceof Date) && 
+            (typeof valueB === 'number' || valueB instanceof Date)) {
+            
             return order === 'asc' ? valueA - valueB : valueB - valueA;
         }
 
-        if (typeof valueA === 'string') {
+        if (typeof valueA === 'string' && typeof valueB === 'string') {
             valueA = valueA.toLowerCase(); 
             valueB = valueB.toLowerCase();
             if (valueA < valueB) {
@@ -144,10 +147,12 @@ function sortUsers(users, sortBy, order = 'asc') {
         return 0;
     });
 }
+
 console.log("________TASK 4____________")
+
 const sortedByAgeAsc = sortUsers(usersList, 'age', 'asc');
-const sortedByFullNameDesc = sortUsers(usersList, 'full_name', 'desc'); 
 console.log('Users sorting by age ascending:', sortedByAgeAsc);
+const sortedByFullNameDesc = sortUsers(usersList, 'full_name', 'desc'); 
 console.log('Users sortig by name descending:', sortedByFullNameDesc);
 
 
