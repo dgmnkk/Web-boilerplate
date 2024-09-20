@@ -174,6 +174,7 @@ function getPercentage(users, key, comparisonFunction) {
     const percentage = (matchingObjects.length / users.length) * 100;
     return percentage;
 }
+
 const percentageAgeOver30 = getPercentage(usersList, 'age', age => age > 30);
 console.log("________TASK 6__________")
 console.log("Users search")
