@@ -143,11 +143,12 @@ hr {
 
 .star-icon{
     position: absolute;
-    top: -10px;
-    right: -5px;
-    width: 50px;
-    height: 50px;
+    top: -8px;
+    right: 10px;
+    width: 30px;
+    height: 30px;
 }
+
 
 .teacher-card-photo {
     width: 120px;
@@ -155,13 +156,25 @@ hr {
     border-radius: 50%;
     border: 3px solid #f75c48;
     margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    font-weight: bold;
+    text-transform: uppercase;
 }
+
+.teacher-card-photo.initials {
+    color: #f75c48;
+}
+
 
 .teacher-card-photo:hover {
     border: 3px solid #87271a;
 }
 
 .teacher-card h3 {
+    white-space: nowrap;
     margin: 0px;
     width: 126px;
 }
@@ -170,6 +183,7 @@ hr {
     color: rgb(190, 187, 187);
     font-size: 16px;
     margin: 5px;
+    white-space: nowrap;
 }
 
 .country-label {
@@ -221,6 +235,7 @@ tr:nth-child(even) {
     display: flex;
     margin-top: 10px;
     padding: 10px;
+    cursor: pointer;
 }
 
 .pagination a {
@@ -240,18 +255,25 @@ tr:nth-child(even) {
 .scroll-container {
     display: flex;
     width: 100%;
+    overflow: hidden;
+    position: relative;
 }
 
 .scroll-items {
     width: 100%;
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    display: flex;
     grid-gap: 10px;
     justify-items: center;
     align-items: center;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    -ms-overflow-style: none; 
+    scrollbar-width: none;
 }
 
-
+.scroll-items::-webkit-scrollbar {
+    display: none;
+}
 .scroll-btn {
     background-color: white;
     border: 0px;
@@ -268,13 +290,6 @@ tr:nth-child(even) {
     .top-teachers {
         grid-template-columns: repeat(4, 1fr);
     }
-
-    .scroll-items {
-        grid-template-columns: repeat(4, 1fr);
-    }
-    .scroll-items .teacher-card:nth-of-type(5) {
-        display: none;
-    }
 }
 
 @media (max-width: 992px) {
@@ -286,12 +301,6 @@ tr:nth-child(even) {
         padding: 20px 50px;
     }
 
-    .scroll-items {
-        grid-template-columns: repeat(3, 1fr);
-    }
-    .scroll-items .teacher-card:nth-of-type(4) {
-        display: none;
-    }
 }
 
 
@@ -317,14 +326,6 @@ tr:nth-child(even) {
         margin-bottom: 5px;
     }
 
-    .scroll-items {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .scroll-items .teacher-card:nth-of-type(3) {
-        display: none;
-    }
-
     .header img {
         display: none;
     }
@@ -341,14 +342,6 @@ tr:nth-child(even) {
 
     hr {
         width: 200px;
-    }
-
-    .scroll-items {
-        grid-template-columns: 1fr;
-    }
-
-    .scroll-items .teacher-card:nth-of-type(2) {
-        display: none;
     }
 
     .options {
@@ -370,7 +363,6 @@ tr:nth-child(even) {
     }
 }
 
-/*Add teacher pop-up*/
 .modal {
     display: none; 
     position: fixed;
@@ -559,6 +551,7 @@ tr:nth-child(even) {
 .teacher-info {
     display: flex;
     height: 170px;
+    width: 100%;
 }
 
 
@@ -574,8 +567,19 @@ tr:nth-child(even) {
 }
 
 .teacher-details h2 {
+    width: 100%;
     margin: 0px;
     font-weight: lighter;
+}
+
+.modal-title{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+.modal-title img{
+    width: 25px;
+    height: 25px;
 }
 
 .teacher-description {
