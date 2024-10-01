@@ -1698,6 +1698,7 @@ export const randomUserMock = [
   },
   {
     gender: "male",
+    favorite: true,
     name: { title: "Mr", first: "Eugene", last: "Kuhn" },
     location: {
       street: { number: 9964, name: "Mockingbird Ln" },
@@ -1800,6 +1801,7 @@ export const randomUserMock = [
       thumbnail: "https://randomuser.me/api/portraits/thumb/men/57.jpg",
     },
     nat: "FR",
+    favorite: true,
   },
 ];
 
@@ -1847,7 +1849,7 @@ export const additionalUsers = [
     timezone: { offset: "+3:30", description: "Tehran" },
     email: "aaron.enoksen@example.com",
     id: "FN19068929566",
-    favorite: null,
+    favorite: true,
     course: null,
     bg_color: "#dface7",
     note: null,
@@ -1864,7 +1866,7 @@ export const additionalUsers = [
     b_day: "1946-06-02T09:26:02.733Z",
     id: "FN02064618043",
     picture_large: "https://randomuser.me/api/portraits/women/67.jpg",
-    favorite: false,
+    favorite: true,
     course: "chemistry",
     bg_color: "#dface7",
     note: "old lady with a cats",

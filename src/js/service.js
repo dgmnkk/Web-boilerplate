@@ -1,6 +1,5 @@
-import { randomUserMock, additionalUsers } from "./data.js"; 
+import { randomUserMock, additionalUsers } from "./data.js";
 
-/**TASK 1*/
 const courses = ['Mathematics', 'Physics', 'English', 'Computer Science', 'Dancing', 'Chess', 'Biology', 'Chemistry', 'Law', 'Art', 'Medicine', 'Statistics'];
 
 function formatUsers(users) {
@@ -38,37 +37,30 @@ const combinedUsers = [...randomUserMock, ...additionalUsers].reduce((acc, curre
   return acc;
 }, []);
 
-const usersList = formatUsers(combinedUsers);
-console.log("________TASK 1____________")
-console.log("Users formating")
-console.log(usersList);
 
-
-
-/**TASK 2 */
 
 function validateUser(user){
     const errors = [];
     if (typeof user.full_name !== 'string' || user.full_name.charAt(0) !== user.full_name.charAt(0).toUpperCase()) {
         errors.push("Invalid name format");
     }
-    
+
     if (typeof user.gender !== 'string' || user.gender.charAt(0) !== user.gender.charAt(0).toUpperCase()) {
         errors.push("Invalid gender format");
     }
-    
+
     if (typeof user.note !== 'string' || user.note.charAt(0) !== user.note.charAt(0).toUpperCase()) {
         errors.push("Invalid note format");
     }
-    
+
     if (typeof user.state !== 'string' || user.state.charAt(0) !== user.state.charAt(0).toUpperCase()) {
         errors.push("Invalid state format");
     }
-    
+
     if (typeof user.city !== 'string' || user.city.charAt(0) !== user.city.charAt(0).toUpperCase()) {
         errors.push("Invalid city format");
     }
-    
+
     if (typeof user.country !== 'string' || user.country.charAt(0) !== user.country.charAt(0).toUpperCase()) {
         errors.push("Invalid country format");
     }
@@ -85,14 +77,7 @@ function validateUser(user){
 
     return errors.length ? {valid: false, errors} : {valid: true};
 }
-const validationResult = validateUser(usersList[46]);
-console.log("________TASK 2____________")
-console.log("User validation")
-console.log(validationResult);
 
-
-
-/**TASK 3 */
 
 function filterUsers(users, filters){
     return users.filter(user => {
@@ -103,22 +88,8 @@ function filterUsers(users, filters){
     });
 }
 
-const filters = {
-    country: 'Denmark',
-    age: 28,
-    gender: 'male',
-    favorite: false
-};
 
 
-const filteredResults = filterUsers(usersList, filters);
-console.log("________TASK 3____________")
-console.log("Users filtration")
-console.log(filteredResults);
-
-
-
-/**TASK 4 */
 
 function sortUsers(users, sortBy, order = 'asc') {
     const usersCopy = users.slice();
@@ -126,14 +97,14 @@ function sortUsers(users, sortBy, order = 'asc') {
         let valueA = a[sortBy];
         let valueB = b[sortBy];
 
-        if ((typeof valueA === 'number' || valueA instanceof Date) && 
+        if ((typeof valueA === 'number' || valueA instanceof Date) &&
             (typeof valueB === 'number' || valueB instanceof Date)) {
-            
+
             return order === 'asc' ? valueA - valueB : valueB - valueA;
         }
 
         if (typeof valueA === 'string' && typeof valueB === 'string') {
-            valueA = valueA.toLowerCase(); 
+            valueA = valueA.toLowerCase();
             valueB = valueB.toLowerCase();
             if (valueA < valueB) {
                 return order === 'asc' ? -1 : 1;
@@ -148,34 +119,17 @@ function sortUsers(users, sortBy, order = 'asc') {
     });
 }
 
-console.log("________TASK 4____________")
 
-const sortedByAgeAsc = sortUsers(usersList, 'age', 'asc');
-console.log('Users sorting by age ascending:', sortedByAgeAsc);
-const sortedByFullNameDesc = sortUsers(usersList, 'full_name', 'desc'); 
-console.log('Users sortig by name descending:', sortedByFullNameDesc);
-
-
-
-/**TASK 5 */
 function findUser(users, key, value) {
     return users.find(user => user[key] === value);
 }
 
-console.log("________TASK 5____________")
-console.log("Find user")
-const result = findUser(usersList, 'age', 28); 
-console.log(result);
 
 
-/**TASK 6 */
 function getPercentage(users, key, comparisonFunction) {
     const matchingObjects = users.filter(user => comparisonFunction(user[key]));
     const percentage = (matchingObjects.length / users.length) * 100;
     return percentage;
 }
 
-const percentageAgeOver30 = getPercentage(usersList, 'age', age => age > 30);
-console.log("________TASK 6__________")
-console.log("Users search")
-console.log(percentageAgeOver30); 
+
