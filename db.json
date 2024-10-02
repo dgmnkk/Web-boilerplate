@@ -1,0 +1,46 @@
+{
+  "teachers": [
+    {
+      "id": "7ae2",
+      "full_name": "Diana Humeniuk",
+      "course": "Mathematics",
+      "country": "Ukraine",
+      "city": "Kyiv",
+      "email": "d.humeniuk@ukma.edu.ua",
+      "phone": "+38095007845",
+      "gender": "Female",
+      "b_date": "2024-09-30",
+      "note": "Hello world",
+      "favorite": false,
+      "bg_color": "#000000"
+    },
+    {
+      "id": "5fe4",
+      "full_name": "John Miles",
+      "course": "Chemistry",
+      "country": "USA",
+      "city": "New York",
+      "email": "d.humeniuk@ukma.edu.ua",
+      "phone": "+38095007845",
+      "gender": "Male",
+      "b_date": "2024-09-30",
+      "note": "The best",
+      "favorite": false,
+      "bg_color": "#000000"
+    },
+    {
+      "id": "8835",
+      "full_name": "Andrii Glybovets",
+      "course": "Physics",
+      "country": "Ukraine",
+      "city": "Kyiv",
+      "email": "d.humeniuk@ukma.edu.ua",
+      "phone": "+38095007845",
+      "gender": "Male",
+      "b_date": "2024-10-04",
+      "note": "Dean",
+      "favorite": false,
+      "bg_color": "#000000"
+    }
+  ]
+}

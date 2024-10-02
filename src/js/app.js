@@ -240,7 +240,7 @@ document.querySelector('#search-btn').addEventListener('click', () => {
 });
 
 
-document.querySelector('.submit-btn').addEventListener('click', (e) => {
+document.querySelector('.submit-btn').addEventListener('click', async(e) => {
     e.preventDefault();
 
     const newUser = {
@@ -259,16 +259,31 @@ document.querySelector('.submit-btn').addEventListener('click', (e) => {
 
     const validation = validateUser(newUser);
     if (validation.valid) {
-        teachersList.push(newUser);
-        sortedTeachersList.push(newUser);
-        renderTeachers(teachersList);
-        renderStatistics(currentPage);
-        setupPagination();
-        closeAddTeacherModal();
+        try {
+            const response = await fetch('http://localhost:5000/teachers', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(newUser)
+            });
+    
+            const newTeacher = await response.json();
+            console.log('New teacher:', newTeacher);
+    
+            teachersList.push(newTeacher);
+            renderTeachers(teachersList);
+            renderStatistics(currentPage);
+            setupPagination();
+            closeAddTeacherModal();
+        } catch (error) {
+            console.error('Adding new teacher error:', error);
+        }
     } else {
         alert('Errors: ' + validation.errors.join(', '));
     }
 });
+
 
 leftScrollBtn.addEventListener('click', () => {
     favoritesContainer.scrollBy({
