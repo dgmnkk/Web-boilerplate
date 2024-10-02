@@ -594,3 +594,19 @@ tr:nth-child(even) {
     cursor: pointer;
     font-size: 14px;
 }
+
+.main-page{
+    text-align: center;
+}
+
+.load-more{
+    background-color: white;
+    border: 0px;
+}
+.load-more img{
+    width: 50px;
+}
+
+.load-more img:hover{
+    content: url("../images/more-hover.png");
+}

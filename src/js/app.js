@@ -29,7 +29,6 @@ const favoritesContainer = document.querySelector('.scroll-items');
 const leftScrollBtn = document.querySelector('.scroll-btn img[src="./images/left-scroll.png"]');
 const rightScrollBtn = document.querySelector('.scroll-btn img[src="./images/right-scroll.png"]');
 
-
 const courses = ['Mathematics', 'Physics', 'English', 'Computer Science', 'Dancing', 'Chess', 'Biology', 'Chemistry', 'Law', 'Art', 'Medicine', 'Statistics'];
 const continents = {
     Europe: ['Austria', 'Belgium', 'Bulgaria', 'Croatia', 'Cyprus', 'Czech Republic', 'Denmark', 'Estonia', 'Finland', 'France', 'Germany', 'Greece', 'Hungary', 'Iceland', 'Ireland', 'Italy', 'Latvia', 'Lithuania', 'Luxembourg', 'Malta', 'Netherlands', 'Poland', 'Portugal', 'Romania', 'Slovakia', 'Slovenia', 'Spain', 'Sweden', 'United Kingdom'],
@@ -39,6 +38,7 @@ const continents = {
     'North America': ['Antigua and Barbuda', 'Bahamas', 'Barbados', 'Belize', 'Canada', 'Costa Rica', 'Cuba', 'Dominica', 'Dominican Republic', 'El Salvador', 'Grenada', 'Guatemala', 'Haiti', 'Honduras', 'Jamaica', 'Mexico', 'Nicaragua', 'Panama', 'Saint Kitts and Nevis', 'Saint Lucia', 'Saint Vincent and the Grenadines', 'United States'],
     'South America': ['Argentina', 'Bolivia', 'Brazil', 'Chile', 'Colombia', 'Ecuador', 'Guyana', 'Paraguay', 'Peru', 'Suriname', 'Uruguay', 'Venezuela']
 };
+
 const combinedUsers = [...randomUserMock, ...additionalUsers].reduce((acc, current) => {
     const isDuplicate = acc.some(user => user.email === current.email && user.full_name == current.full_name && user.gender == current.gender && user.phone == current.phone);
     if (!isDuplicate) {
@@ -46,13 +46,39 @@ const combinedUsers = [...randomUserMock, ...additionalUsers].reduce((acc, curre
     }
     return acc;
 }, []);
-let teachersList = formatUsers(combinedUsers);
-let filteredTeachersList = formatUsers(combinedUsers);
-let sortedTeachersList = formatUsers(combinedUsers);
-let favoritesList = teachersList.filter(teacher => teacher.favorite === true);
+
+let teachersList = [];
+let filteredTeachersList = [];
+let sortedTeachersList = [];
+let favoritesList = [];
 const rowsPerPage = 10;
 let currentPage = 1;
 
+
+
+async function fetchUsers(results = 50) {
+    try {
+        const response = await fetch(`https://randomuser.me/api/?results=${results}`);
+        const data = await response.json();
+        return data.results;
+    } catch (error) {
+        console.error('Error fetching users:', error);
+    }
+}
+
+fetchUsers().then(users => {
+    teachersList = formatUsers(users);
+    filteredTeachersList = teachersList;
+    sortedTeachersList = teachersList;
+    favoritesList = teachersList.filter(teacher => teacher.favorite === true);
+
+    renderTeachers(teachersList);
+    renderFavorites();
+    renderStatistics(currentPage);
+    setupPagination();
+}).catch(error => {
+    console.error('Error:', error);
+});
 
 function renderTeachers(teachers) {
     container.innerHTML = '';
@@ -74,7 +100,24 @@ function renderTeachers(teachers) {
     updateCardsListeners();
 }
 
-renderTeachers(teachersList);
+document.querySelector('.load-more').addEventListener('click', () => {
+    fetchUsers(10).then(users => {
+        users = formatUsers(users);
+        teachersList = [...teachersList, ...users];
+        console.log(teachersList)
+        filteredTeachersList = teachersList;
+        sortedTeachersList = teachersList;
+        favoritesList = teachersList.filter(teacher => teacher.favorite === true);
+    
+        renderTeachers(teachersList);
+        renderFavorites();
+        renderStatistics(currentPage);
+        setupPagination();
+    }).catch(error => {
+        console.error('Error:', error);
+    });
+});
+
 
 function renderFavorites() {
     favoritesContainer.innerHTML = '';
@@ -93,7 +136,6 @@ function renderFavorites() {
     });
     updateCardsListeners();
 }
-renderFavorites();
 
 
 function applyFilters() {
@@ -106,13 +148,16 @@ function applyFilters() {
     }
     filteredTeachersList = filterUsers(teachersList, filters);
     renderTeachers(filteredTeachersList);
+    sortedTeachersList = filteredTeachersList;
+    renderStatistics(currentPage);
+    setupPagination();
 }
 
 
 document.querySelectorAll('.statistics th').forEach(header => {
     header.addEventListener('click', () => {
         const sortBy = header.getAttribute('id');
-        sortedTeachersList = sortUsers(teachersList, sortBy);
+        sortedTeachersList = sortUsers(filteredTeachersList, sortBy);
         renderStatistics(currentPage);
     });
 });
@@ -176,20 +221,22 @@ function updatePagination() {
     paginationLinks[currentPage - 1].classList.add('active');
 }
 
-renderStatistics(currentPage);
-setupPagination();
-
-
-
 document.querySelector('#search-btn').addEventListener('click', () => {
     const searchTerm = document.querySelector('#search-input').value.toLowerCase();
-    filteredTeachersList = teachersList.filter(user =>
-        user.full_name.toLowerCase().includes(searchTerm) ||
-        (user.note && user.note.toLowerCase().includes(searchTerm)) ||
-        String(user.age).includes(searchTerm) ||
-        user.course.toLowerCase().includes(searchTerm)
-    );
+    if(searchTerm == ''){
+        filteredTeachersList = teachersList;
+    }else{
+        filteredTeachersList = teachersList.filter(user =>
+            user.full_name.toLowerCase().includes(searchTerm) ||
+            (user.note && user.note.toLowerCase().includes(searchTerm)) ||
+            String(user.age).includes(searchTerm) ||
+            user.course.toLowerCase().includes(searchTerm)
+        );
+    }
     renderTeachers(filteredTeachersList);
+    sortedTeachersList = filteredTeachersList;
+    renderStatistics(currentPage);
+    setupPagination();
 });
 
 
