@@ -29,7 +29,7 @@
          <button id="add-teacher">Add teacher</button>
       </div>
       <hr>
-      <div>
+      <div class="main-page">
          <h1>Top Teachers</h1>
          <div class="filters-panel">
             <div class="filter">
@@ -73,6 +73,9 @@
          </div>
          <div class="top-teachers">
          </div>
+         <button class="load-more">
+            <img  src="./images/more.png" />
+         </button>
          <hr>
          <div class="statistics">
             <h1>Statistics</h1>
@@ -87,49 +90,11 @@
                   </tr>
                </thead>
                <tbody>
-                  <tr>
-                     <td>Daisy Alexander</td>
-                     <td>Chemistry</td>
-                     <td>25</td>
-                     <td>Female</td>
-                     <td>Vietnam</td>
-                  </tr>
-                  <tr>
-                     <td>Daisy Alexander</td>
-                     <td>Chemistry</td>
-                     <td>25</td>
-                     <td>Female</td>
-                     <td>Vietnam</td>
-                  </tr>
-                  <tr>
-                     <td>Daisy Alexander</td>
-                     <td>Chemistry</td>
-                     <td>25</td>
-                     <td>Female</td>
-                     <td>Vietnam</td>
-                  </tr>
-                  <tr>
-                     <td>Daisy Alexander</td>
-                     <td>Chemistry</td>
-                     <td>25</td>
-                     <td>Female</td>
-                     <td>Vietnam</td>
-                  </tr>
-                  <tr>
-                     <td>Daisy Alexander</td>
-                     <td>Chemistry</td>
-                     <td>25</td>
-                     <td>Female</td>
-                     <td>Vietnam</td>
-                  </tr>
+
                </tbody>
             </table>
             <div class="pagination">
-               <a  class="active">1</a>
-               <a >2</a>
-               <a >3</a>
-               <a >...</a>
-               <a >Last</a>
+
             </div>
          </div>
          <hr>
@@ -140,31 +105,7 @@
                   <img src="./images/left-scroll.png" />
                </button>
                <div class="scroll-items">
-                  <div class="teacher-card">
-                     <img class="teacher-card-photo" src="images/teacher.jpg" alt="Teacher">
-                     <h3>Prag Rameshbabu</h3>
-                     <p class="country-label">UK</p>
-                  </div>
-                  <div class="teacher-card">
-                     <img class="teacher-card-photo" src="images/teacher.jpg" alt="Teacher">
-                     <h3>Prag Rameshbabu</h3>
-                     <p class="country-label">UK</p>
-                  </div>
-                  <div class="teacher-card">
-                     <img class="teacher-card-photo" src="images/teacher.jpg" alt="Teacher">
-                     <h3>Prag Rameshbabu</h3>
-                     <p class="country-label">UK</p>
-                  </div>
-                  <div class="teacher-card">
-                     <img class="teacher-card-photo" src="images/teacher.jpg" alt="Teacher">
-                     <h3>Prag Rameshbabu</h3>
-                     <p class="country-label">UK</p>
-                  </div>
-                  <div class="teacher-card">
-                     <img class="teacher-card-photo" src="images/teacher.jpg" alt="Teacher">
-                     <h3>Prag Rameshbabu</h3>
-                     <p class="country-label">UK</p>
-                  </div>
+
                </div>
                <button class="scroll-btn">
                   <img src="./images/right-scroll.png" />
@@ -243,7 +184,7 @@
                   <input type="date" id="dob">
                </div>
             </div>
-           
+
             <div class="sex-options">
                <label>Sex</label>
                <div class="radio-group">
@@ -264,42 +205,43 @@
                <label for="notes">Notes (optional)</label>
                <textarea id="notes" rows="4"></textarea>
             </div>
-            
 
-            <button  class="submit-btn">Add</button>
+
+            <button class="submit-btn">Add</button>
          </form>
       </div>
    </div>
 
    <div id="teacherModal" class="modal">
       <div class="teacherModal-content">
-          <div class="modal-header">
-              <h2>Teacher Info</h2>
-              <button class="close-btn-teacherModal">&times;</button>
-          </div>
-          <div class="modal-body">
-              <div class="teacher-info">
-                  <img src="images/teacher.jpg" alt="Teacher" class="teacher-photo">
-                  <div class="teacher-details">
-                     <div class="modal-title">
-                        <h2>Ihor Tkachuk</h2>
-                        <img src="./images/star-default.png"/>
-                     </div>
-                      <h3 class="speciality">Chemistry</h3>
-                      <p>Kyiv, Ukraine</p>
-                      <p>35, Male</p>
-                      <a href="mailto:ihor_tkachuk@domain.com">ihor_tkachuk@domain.com</a>
-                      <p>+380969493252</p>
+         <div class="modal-header">
+            <h2>Teacher Info</h2>
+            <button class="close-btn-teacherModal">&times;</button>
+         </div>
+         <div class="modal-body">
+            <div class="teacher-info">
+               <img src="images/teacher.jpg" alt="Teacher" class="teacher-photo">
+               <div class="teacher-details">
+                  <div class="modal-title">
+                     <h2>Ihor Tkachuk</h2>
+                     <img src="./images/star-default.png" />
                   </div>
-              </div>
-              <p class="teacher-description">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ab autem consectetur culpa cumque, distinctio dolor dolorem doloremque ex explicabo facilis.
-              </p>
-              <a href="#" class="toggle-map">toggle map</a>
-          </div>
+                  <h3 class="speciality">Chemistry</h3>
+                  <p>Kyiv, Ukraine</p>
+                  <p>35, Male</p>
+                  <a href="mailto:ihor_tkachuk@domain.com">ihor_tkachuk@domain.com</a>
+                  <p>+380969493252</p>
+               </div>
+            </div>
+            <p class="teacher-description">
+               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ab autem consectetur culpa cumque, distinctio
+               dolor dolorem doloremque ex explicabo facilis.
+            </p>
+            <a href="#" class="toggle-map">toggle map</a>
+         </div>
       </div>
-  </div>
-   <script src="./js/app.js" ></script>
+   </div>
+   <script src="./js/app.js"></script>
 </body>
 
 </html>
